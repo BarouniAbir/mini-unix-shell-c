@@ -1,52 +1,58 @@
-# OurShell : Mini interpréteur de commandes UNIX
+# OurShell : Mini UNIX Command Interpreter
 
-> **Projet académique** : création d’un mini shell en C sous UNIX (interactive + batch) avec historique simple.
+> **Academic Project** — A lightweight mini shell written in C for UNIX systems. Supports interactive and batch modes, with a simple command history.
 
-## Fonctionnalités
-- **Mode interactif** : invite `[~$PWD] %` → lit une commande et l’exécute via `fork` + `exec*`.  
-- **Historique** : affiche les **10** dernières commandes (`history`).  
-- **Mode batch** : si un **fichier** est passé en argument (`argc == 2`), exécute chaque ligne séquentiellement.  
-- **Gestion des erreurs** : messages d’erreurs simples en cas d’échec d’exécution.
+## Features
 
-## Contenu
-- `shell.c` — code source C du shell.
-- `docs/choices_of_data_structures_and_algorithms.pdf` — rapport décrivant les choix d’algorithmes et de structures de données.
-- `LICENSE` — licence MIT.
-- `.gitignore` — ignore les fichiers de build/obj.
+* **Interactive mode**: Displays the prompt `[~$PWD] %`, reads a command, and executes it using `fork` + `exec*`.
+* **History**: Shows the **last 10 executed commands** (`history`).
+* **Batch mode**: If a **file** is passed as an argument (`argc == 2`), it executes each line sequentially.
+* **Error handling**: Simple error messages are displayed if command execution fails.
+
+## Project Structure
+
+* `shell.c` — C source code of the shell.
+* `LICENSE` — MIT license.
+* `.gitignore` — ignores build and object files.
 
 ## Compilation
+
 ```bash
 gcc shell.c -o ourshell
 ```
 
-## Utilisation
-### Mode interactif
+## Usage
+
+### Interactive Mode
+
 ```bash
 ./ourshell
-# tapez des commandes, ex. :
+# Example commands:
 ls -la
-history     # affiche les 10 dernières commandes
-quit        # quitte le shell
+history     # displays the last 10 commands
+quit        # exits the shell
 ```
 
-### Mode batch (script)
+### Batch Mode (Script)
+
 ```bash
 ./ourshell commands.txt
 ```
 
-## Détails d’implémentation (aperçu)
-- Boucle principale avec affichage de l’invite, lecture de la ligne, et exécution via `fork()`/`execl`/`execvp` + `waitpid()`.
-- Commande builtin `quit` (sortie propre).  
-- Commande spéciale `history` (stockage circulaire de 10 entrées).  
-- En mode batch : ouverture de fichier, lecture ligne par ligne, `splitLine()` puis exécution.
+## Implementation Overview
 
-Pour plus de précisions, voir le rapport PDF dans `docs/`.
+* Main loop displays the prompt, reads input, and executes it with `fork()` / `execl` / `execvp` + `waitpid()`.
+* Built-in command `quit` for clean exit.
+* Special `history` command with a circular buffer storing the last 10 entries.
+* In batch mode: opens the file, reads line by line, uses `splitLine()` to parse and execute.
 
-## Roadmap (idées)
-- Support des redirections (`>`, `<`) et des pipes (`|`) de façon robuste.
-- Complétion & édition de ligne (GNU Readline).
-- Persistance de l’historique entre sessions (~/.ourshell_history).
-- Tests automatiques (bats/CTest) + CI GitHub Actions.
+## Roadmap
 
-## Auteurs
-Projet réalisé dans le cadre académique par Barouni Abir.
+* Add support for redirections (`>`, `<`) and pipes (`|`).
+* Line editing & autocompletion (GNU Readline).
+* Persistent history between sessions (`~/.ourshell_history`).
+* Automated testing (bats/CTest) + GitHub Actions CI.
+
+## Authors
+
+Developed as part of an academic project by **Barouni Abir**.
