@@ -1,6 +1,6 @@
 # OurShell : Mini UNIX Command Interpreter
 
-> **Academic Project** — A lightweight mini shell written in C for UNIX systems. Supports interactive and batch modes, with a simple command history.
+> **Academic Project** A lightweight mini shell written in C for UNIX systems. Supports interactive and batch modes, with a simple command history.
 
 ## Features
 
